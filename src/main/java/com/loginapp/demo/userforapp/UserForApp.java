@@ -41,6 +41,7 @@ name = "secventa_generata",
     private String userName;
     private String email;
     private String password;
+    @Enumerated(EnumType.STRING)
     private AppUserRole appUserRole;
     private Boolean locked;
     private Boolean enabled;
