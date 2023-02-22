@@ -1,5 +1,6 @@
 package com.loginapp.demo.userforapp;
 
+import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.Collections;
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
+@Entity
 public class UserForApp implements UserDetails {
     public UserForApp(String name, String userName, String email, String password, AppUserRole appUserRole, Boolean locked, Boolean enabled) {
         this.name = name;
@@ -24,7 +26,16 @@ public class UserForApp implements UserDetails {
         this.locked = locked;
         this.enabled = enabled;
     }
-
+@Id
+@SequenceGenerator(
+name = "secventa_generata",
+        sequenceName = "secventa_generata",
+    allocationSize = 1
+        )
+@GeneratedValue(
+        strategy = GenerationType.SEQUENCE,
+        generator = "secventa_generata"
+)
     private Long id;
     private String name;
     private String userName;
